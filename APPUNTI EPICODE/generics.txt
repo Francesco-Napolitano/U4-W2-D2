@@ -1,0 +1,56 @@
+I generics in Java sono un potente strumento che permette di scrivere codice più flessibile e sicuro, fornendo una maggiore astrazione sopra i tipi di dati utilizzati. In particolare, nell'ambito delle collections, i generics offrono il vantaggio di scrivere collezioni che possono operare su qualsiasi tipo di oggetto, garantendo al contempo la sicurezza di tipo a tempo di compilazione.
+
+Cosa sono i Generics?
+I generics permettono di definire classi, interfacce e metodi con tipi di dati parametrizzabili. Invece di usare tipi specifici, si utilizzano parametri di tipo (come T, E, K, V) che possono essere sostituiti con qualsiasi tipo di riferimento non-primitivo.
+
+Utilizzo dei Generics nelle Collections
+Ecco un esempio di come si utilizzano i generics con le collezioni:
+
+List<T>
+
+List<String> strings = new ArrayList<>();
+strings.add("hello");
+String s = strings.get(0); // Non c'è bisogno di casting
+
+In questo esempio, `List<String>` indica che stiamo lavorando con una lista di stringhe. Questo garantisce che tutti gli elementi inseriti nella lista siano stringhe e che i valori estratti dalla lista siano automaticamente di tipo `String`.
+
+Regole di Astrazione e Ereditarietà
+I generics hanno regole specifiche quando si tratta di ereditarietà e astrazione:
+
+1. Compatibilità: Un tipo `List<String>` non è considerato sottotipo di `List<Object>`, anche se `String` è un sottotipo di `Object`. Questo è importante per mantenere la sicurezza del tipo.
+
+2. Wildcard con Extends: Per utilizzare la polimorfia con i generics, si possono utilizzare i wildcard. Per esempio, `List<? extends Number>` può riferirsi a una lista di `Integer`, `Float`, `Double`, ecc., poiché tutti questi tipi sono sottotipi di `Number`.
+
+ 
+   List<? extends Number> numbers = new ArrayList<Integer>();
+
+
+3. Wildcard con Super: Al contrario, `List<? super Integer>` può riferirsi a una lista di `Integer`, `Number`, `Object`, ecc., poiché questi tipi sono supertipi di `Integer`.
+
+4. Metodi Generici: È possibile scrivere metodi che hanno i loro propri parametri di tipo generico.
+
+   public <T> void printList(List<T> list) {
+       for (T item : list) {
+           System.out.println(item);
+       }
+   }
+
+
+5. Type Erasure: In fase di compilazione, il compilatore Java elimina (o "cancella") le informazioni sui tipi generici, sostituendoli con i loro limiti (o `Object` se non specificati). Questo è importante per la compatibilità con il codice scritto prima dell'introduzione dei generics in Java.
+
+6. Limiti nei Generics: È possibile limitare i tipi che possono essere utilizzati come parametri generici. Ad esempio, `<T extends Comparable<T>>` significa che il tipo T deve implementare l'interfaccia `Comparable<T>`.
+
+7. Astrazione e Generics: Le classi astratte possono anche essere generiche. Ad esempio, si potrebbe avere una classe astratta `AbstractDAO<T>` che fornisce funzionalità di base per un DAO (Data Access Object) per il tipo `T`.
+
+Esempio di Classe Astratta Generica
+
+public abstract class AbstractDAO<T> {
+    public abstract void save(T entity);
+    public abstract T findById(int id);
+}
+
+
+In questo esempio, la classe `AbstractDAO<T>` può essere utilizzata come base per creare DAO per diversi tipi di entità, con il tipo di entità specificato quando si estende la classe.
+
+Conclusioni sui Generics
+I generics aggiungono un livello di astrazione che permette di scrivere codice più generale e sicuro. Permettono di catturare errori di tipo a tempo di compilazione invece che a runtime, rendendo il codice più robusto. Inoltre, i generics rendono il codice più leggibile, eliminando la necessità di casting esplicito e rendendo più chiaro l'intento del codice.

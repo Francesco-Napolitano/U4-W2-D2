@@ -1,0 +1,131 @@
+Le annotazioni in Java sono utilizzate per fornire informazioni aggiuntive sul codice a tempo di compilazione, a tempo di esecuzione, o a entrambi. Esse non modificano direttamente l'azione del codice, ma possono essere utilizzate da strumenti di sviluppo, librerie e framework per generare codice, processare configurazioni, o gestire comportamenti a runtime.
+
+Ecco alcuni esempi comuni di annotazioni in Java e i loro utilizzi:
+
+1. `@Override`
+Indica che il metodo annotato sovrascrive il metodo di una superclasse.
+
+
+class Animal {
+    public void sound() {
+        System.out.println("Some sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Woof");
+    }
+}
+
+2. `@Deprecated`
+Segnala che un elemento (classe, metodo, campo) è obsoleto e non dovrebbe essere utilizzato.
+
+public class OldClass {
+    @Deprecated
+    public void oldMethod() {
+        System.out.println("Vecchio metodo");
+    }
+}
+
+3. `@SuppressWarnings`
+Sopprime determinati tipi di avvisi generati dal compilatore.
+
+
+@SuppressWarnings("unchecked")
+public void myMethod() {
+    List list = new ArrayList();
+    list.add("test");
+}
+
+
+4. `@SafeVarargs`
+Sopprime gli avvisi relativi all'uso di varargs con tipi generici.
+
+@SafeVarargs
+public final <T> List<T> makeList(T... elements) {
+    return Arrays.asList(elements);
+}
+
+5. `@FunctionalInterface`
+Indica che un'interfaccia è destinata a essere un'interfaccia funzionale (contiene esattamente un metodo astratto). Utilizzato in contesti di programmazione funzionale, come lambda.
+
+@FunctionalInterface
+interface Greeting {
+    void sayHello(String name);
+}
+
+6. Annotazioni per Test (JUnit)
+
+public class MyTest {
+
+    @Before
+    public void setUp() {
+        // Codice di inizializzazione
+    }
+
+    @Test
+    public void testMethod() {
+        // Codice di test
+    }
+
+    @After
+    public void tearDown() {
+        // Codice di pulizia
+    }
+}
+
+
+7. Annotazioni Spring Framework
+Utilizzate per configurare i componenti Spring, come i controller, i servizi, e la
+gestione delle dipendenze.
+
+
+@Controller
+public class MyController {
+
+    @Autowired
+    private MyService myService;
+
+    @RequestMapping("/hello")
+    @ResponseBody
+    public String sayHello() {
+        return "Hello World";
+    }
+}
+
+8. Annotazioni Java EE / Jakarta EE
+Utilizzate in applicazioni enterprise, come per definire servlet, servizi web, e gestione delle transazioni.
+
+@WebServlet("/helloServlet")
+public class HelloServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Logica del servlet
+    }
+}
+
+@Stateless
+public class MyService {
+    // Logica del servizio enterprise
+}
+
+
+9. Annotazioni Personalizzate
+Puoi anche definire le tue annotazioni personalizzate.
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface MyCustomAnnotation {
+    String value();
+}
+
+public class MyClass {
+    @MyCustomAnnotation("example")
+    public void myMethod() {
+        // Codice
+    }
+}
+
+Questi sono solo alcuni esempi di come le annotazioni possono essere utilizzate in Java. Sono strumenti potenti e versatili che possono aiutare a rendere il codice più pulito, più leggibile e più facile da gestire.

@@ -1,0 +1,237 @@
+Certamente! Ecco alcuni esempi di codice e algoritmi che mostrano come utilizzare varie collezioni in Java, con particolare attenzione alle loro implementazioni e all'uso pratico.
+
+1. ArrayList
+Uso: 
+Gestione di liste dinamiche di elementi con accesso rapido all'elemento.
+
+Implementazione ed Esempio:
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Mela");      // Aggiunge elementi
+        fruits.add("Banana");
+        fruits.add("Arancia");
+
+        String firstFruit = fruits.get(0); // Accesso rapido
+        System.out.println("Primo frutto: " + firstFruit);
+
+        fruits.remove("Banana"); // Rimozione di elementi
+        System.out.println("Frutti: " + fruits);
+    }
+}
+
+
+2. HashSet
+Uso: 
+Gestione di insiemi unici senza duplicati e senza un ordine specifico.
+
+Implementazione ed Esempio:
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class HashSetExample {
+    public static void main(String[] args) {
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        uniqueNumbers.add(2);
+        uniqueNumbers.add(3);
+        uniqueNumbers.add(2); // Questo non sarà aggiunto
+
+        System.out.println("Numeri unici: " + uniqueNumbers);
+    }
+}
+
+
+3. HashMap
+Uso: 
+Gestione di coppie chiave-valore, con chiavi uniche.
+
+Implementazione ed Esempio:
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        Map<String, Integer> wordCount = new HashMap<>();
+        wordCount.put("mela", 3);
+        wordCount.put("banana", 5);
+        wordCount.put("arancia", 2);
+
+        int bananaCount = wordCount.get("banana"); // Accesso tramite chiave
+        System.out.println("Conteggio banane: " + bananaCount);
+
+        wordCount.put("banana", 6); // Aggiorna il valore per la chiave "banana"
+        System.out.println("Aggiornato conteggio banane: " + wordCount.get("banana"));
+    }
+}
+
+4. TreeMap
+Uso: 
+Come HashMap, ma mantiene le chiavi in ordine naturale o in base a un comparatore fornito.
+
+Implementazione ed Esempio:
+
+import java.util.TreeMap;
+import java.util.Map;
+
+public class TreeMapExample {
+    public static void main(String[] args) {
+        Map<String, String> dictionary = new TreeMap<>();
+        dictionary.put("Bravo", "Un termine di approvazione");
+        dictionary.put("Alpha", "Il primo in un gruppo");
+        dictionary.put("Charlie", "Nome in codice in alfabeto fonetico");
+
+        for (String key : dictionary.keySet()) {
+            System.out.println(key + ": " + dictionary.get(key));
+        }
+    }
+}
+
+5. LinkedList
+Uso: 
+Liste dove l'inserimento e la rimozione frequenti sono comuni, può essere usata come coda o stack.
+
+Implementazione ed Esempio:
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class LinkedListExample {
+    public static void main(String[] args) {
+        Queue<String> queue = new LinkedList<>();
+        queue.offer("primo");
+        queue.offer("secondo");
+        queue.offer("terzo");
+
+        while (!queue.isEmpty()) {
+            String element = queue.poll();
+            System.out.println("Elaborazione dell'elemento: " + element);
+        }
+    }
+}
+
+6. PriorityQueue
+Uso: 
+Coda basata su priorità. Gli elementi vengono ordinati in base alla loro priorità naturale o tramite un comparatore.
+
+Implementazione ed Esempio:
+
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        priorityQueue.add(4);
+        priorityQueue.add(2);
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+
+        System.out.println("Elementi nella coda: " + priorityQueue);
+
+        while (!priorityQueue.isEmpty()) {
+            int item = priorityQueue.poll(); // Estrae l'elemento con la priorità più alta
+            System.out.println("Processando l'elemento: " + item);
+        }
+    }
+}
+
+7. ArrayDeque
+Uso: 
+Implementazione efficace delle code a doppia estremità (deque), può essere usata sia come stack che come coda.
+
+Implementazione ed Esempio come Stack:
+
+import java.util.Deque;
+import java.util.ArrayDeque;
+
+public class ArrayDequeStackExample {
+    public static void main(String[] args) {
+        Deque<String> stack = new ArrayDeque<>();
+
+        // Uso come stack
+        stack.push("primo");
+        stack.push("secondo");
+        stack.push("terzo");
+
+        while (!stack.isEmpty()) {
+            String element = stack.pop(); // Estrae l'elemento dall'alto dello stack
+            System.out.println("Pop dell'elemento: " + element);
+        }
+    }
+}
+```
+
+Implementazione ed Esempio come Queue:
+
+import java.util.Deque;
+import java.util.ArrayDeque;
+
+public class ArrayDequeQueueExample {
+    public static void main(String[] args) {
+        Deque<String> queue = new ArrayDeque<>();
+
+        Uso come coda
+        queue.offer("primo");
+        queue.offer("secondo");
+        queue.offer("terzo");
+
+        while (!queue.isEmpty()) {
+            String element = queue.poll(); // Estrae l'elemento dalla testa della coda
+            System.out.println("Poll dell'elemento: " + element);
+        }
+    }
+}
+
+Questi esempi illustrano come diverse strutture dati del framework Collections in Java possono essere utilizzate per soddisfare vari casi d'uso. Scegliere l'
+
+implementazione giusta dipende dalle esigenze specifiche dell'applicazione, come l'efficienza nelle operazioni di inserimento, rimozione, ricerca e accesso agli elementi.
+
+
+
+Uso:
+`TreeMap` è utilizzato per memorizzare coppie chiave-valore in una struttura di dati basata su albero. Fornisce una mappatura ordinata secondo l'ordine naturale delle sue chiavi o un `Comparator` fornito al momento della creazione della `TreeMap`. È utile quando è necessario un ordinamento efficiente e l'accesso ordinato alle chiavi.
+
+Implementazione ed Esempio:
+
+Ecco un semplice esempio di come puoi utilizzare `TreeMap`:
+
+
+import java.util.TreeMap;
+import java.util.Map;
+
+public class TreeMapExample {
+    public static void main(String[] args) {
+        Map<String, Integer> usersAge = new TreeMap<>();
+
+        usersAge.put("Alice", 30);
+        usersAge.put("Bob", 25);
+        usersAge.put("Charlie", 35);
+        // Se aggiungi un duplicato, sovrascriverà il valore precedente
+        usersAge.put("Alice", 32);
+
+        System.out.println("Età degli utenti: " + usersAge);
+    }
+}
+
+
+In questo esempio, `TreeMap` viene utilizzata per memorizzare l'età degli utenti. Le chiavi (i nomi degli utenti) vengono ordinate automaticamente. Se provi ad inserire una chiave duplicata (come nel caso di "Alice"), il valore precedente associato a quella chiave verrà sovrascritto.
+
+Caratteristiche Principali di `TreeMap`:
+
+1. Ordinamento: Le chiavi sono ordinate in base al loro ordine naturale o tramite un `Comparator` specificato al momento della creazione della `TreeMap`.
+
+2. Performance: Le operazioni di ricerca, inserimento ed eliminazione hanno un tempo di esecuzione logaritmico rispetto al numero di elementi nella mappa.
+
+3. Sovrascrittura di Elementi: Se inserisci una chiave già esistente con un nuovo valore, il vecchio valore verrà sovrascritto.
+
+4. Navigazione: `TreeMap` fornisce vari metodi per navigare tra le chiavi (come `firstKey()`, `lastKey()`, `higherKey()`, `lowerKey()` ecc.).
+
+5. Null Values: Mentre `TreeMap` permette valori null, l'uso di chiavi null generalmente non è consentito (specialmente se si utilizza l'ordinamento naturale, che richiede che le chiavi siano confrontabili).
+
+`TreeMap` è una scelta eccellente quando hai bisogno di una mappatura ordinata e efficiente in termini di prestazioni per operazioni basate su chiavi.

@@ -1,0 +1,56 @@
+Stack (Pila)
+Uno stack (o pila) è una struttura dati lineare che segue il principio Last In, First Out (LIFO). Ciò significa che l'ultimo elemento inserito nello stack è il primo ad essere rimosso. Uno stack offre due operazioni principali:
+
+1. Push: Aggiunge un elemento in cima allo stack.
+2. Pop: Rimuove e restituisce l'elemento in cima allo stack.
+
+Gli stack sono utili in molti scenari di programmazione, come nella valutazione di espressioni, nella navigazione (ad esempio, il tasto "indietro" nei browser che utilizza uno stack per tenere traccia delle pagine visitate), o nella gestione delle chiamate di funzioni (il call stack).
+
+Esempio di Codice Java per uno Stack:
+
+import java.util.Stack;
+
+public class StackExample {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+        
+        stack.push(1); // Aggiunge 1 allo stack
+        stack.push(2); // Aggiunge 2 allo stack
+        stack.push(3); // Aggiunge 3 allo stack
+
+        while (!stack.isEmpty()) {
+            int topElement = stack.pop(); // Rimuove e restituisce l'elemento in cima
+            System.out.println(topElement);
+        }
+    }
+}
+
+Coda FIFO (First In, First Out)
+Una coda FIFO è una struttura dati lineare che segue il principio First In, First Out. Questo significa che l'elemento inserito per primo nella coda è il primo ad essere rimosso. Le operazioni principali di una coda sono:
+
+1. Enqueue (o Offer): Aggiunge un elemento alla fine della coda.
+2. Dequeue (o Poll): Rimuove e restituisce l'elemento all'inizio della coda.
+
+Le code sono ampiamente utilizzate in situazioni dove è necessario mantenere un ordine di elaborazione, come nella gestione delle richieste in un server web, nell'elaborazione dei dati in ordine di arrivo, o nelle code di stampa.
+
+Esempio di Codice Java per una Coda FIFO:
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class QueueExample {
+    public static void main(String[] args) {
+        Queue<Integer> queue = new LinkedList<>();
+        
+        queue.offer(1); // Aggiunge 1 alla coda
+        queue.offer(2); // Aggiunge 2 alla coda
+        queue.offer(3); // Aggiunge 3 alla coda
+
+        while (!queue.isEmpty()) {
+            int frontElement = queue.poll(); // Rimuove e restituisce l'elemento in testa
+            System.out.println(frontElement);
+        }
+    }
+}
+
+In entrambi i casi, è importante notare che `Stack` e `LinkedList` (per le code) sono solo una delle possibili implementazioni in Java. Altre classi e interfacce, come `Deque`, possono essere utilizzate per implementare stack e code con maggiore flessibilità.
