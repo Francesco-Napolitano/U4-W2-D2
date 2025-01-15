@@ -34,6 +34,5 @@ public class NumeriCasuali {
             if (c && i % 2 == 0) System.out.println("Indice pari, " + listaCasuali.get(i));
             else if (c) System.out.println("Indice dispari, " + listaCasuali.get(i));
         }
-
     }
 }
